@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { take, prepend } from '../helpers/array'
-import { getRandomInt } from '../helpers/random'
+// import { getRandomInt } from '../helpers/random' // compare with import()
 
 const NUMBERS_COUNT_TO_TAKE = 5
 
@@ -15,7 +15,9 @@ export const Randomizer = () => {
     setNumbersString(getNumbersString(numbers, NUMBERS_COUNT_TO_TAKE))
   }, [numbers])
 
-  const handleGenerate = () => {
+  const handleGenerate = async () => {
+    const { getRandomInt } = await import('../helpers/random') //
+
     const number = getRandomInt(0, 100)
     setNumbers(prepend(number, numbers))
   }
